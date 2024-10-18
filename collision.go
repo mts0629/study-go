@@ -17,12 +17,12 @@ func GetDist(p1, p2 Point) float64 {
 	dx := p1.x - p2.x
 	dy := p1.y - p2.y
 
-	return math.Sqrt(dx * dx + dy * dy)
+	return math.Sqrt(dx*dx + dy*dy)
 }
 
 // Ball struct
 type Ball struct {
-	center Point // Center
+	center Point   // Center
 	radius float64 // Radius
 }
 
@@ -47,12 +47,12 @@ func main() {
 
 	for {
 		// Random walk of 2 balls
-		dx := (rand.Float64() * 2 - 1.0) * 0.1
-		dy := (rand.Float64() * 2 - 1.0) * 0.1
+		dx := (rand.Float64()*2 - 1.0) * 0.1
+		dy := (rand.Float64()*2 - 1.0) * 0.1
 		a.Move(dx, dy)
 
-		dx = (rand.Float64() * 2 - 1.0) * 0.1
-		dy = (rand.Float64() * 2 - 1.0) * 0.1
+		dx = (rand.Float64()*2 - 1.0) * 0.1
+		dy = (rand.Float64()*2 - 1.0) * 0.1
 		b.Move(dx, dy)
 
 		// Print position
