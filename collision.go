@@ -23,26 +23,26 @@ func GetDist(p1, p2 Point) float64 {
 
 // Ball struct
 type Ball struct {
-	pos    Point   // Position
+	Point          // Coordinate, embedded struct
 	radius float64 // Radius
 }
 
 // Method with pointer receiver
 // Move a ball
 func (b *Ball) Move(dx, dy float64) {
-	b.pos.x += dx
-	b.pos.y += dy
+	b.x += dx
+	b.y += dy
 }
 
 // Methos with value receiver
 // Print a position
 func (b Ball) GetPos() (float64, float64) {
-	return b.pos.x, b.pos.y
+	return b.x, b.y
 }
 
 // Check collision of 2 balls
 func IsCollided(b1, b2 Ball) bool {
-	if GetDist(b1.pos, b2.pos) <= (b1.radius + b2.radius) {
+	if GetDist(b1.Point, b2.Point) <= (b1.radius + b2.radius) {
 		return true
 	}
 	return false
