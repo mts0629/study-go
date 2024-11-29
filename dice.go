@@ -1,31 +1,28 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"math/rand/v2"
-	"os"
-	"strconv"
 )
 
 func main() {
-	args := os.Args[1:]
+	// Command line options
+	var (
+		s = flag.Int("s", 6, "number of sides")
+		n = flag.Int("n", 1, "number of dice rolls")
+	)
 
-	// Specify number of rolls, 1 in default
-	n_rolls := 1
-	if len(args) == 1 {
-		var err error
-		n_rolls, err = strconv.Atoi(args[0])
-		if err != nil {
-			fmt.Println("Error:", err)
-			return
-		}
-	}
+	flag.Parse()
 
-	for i := 0; i < n_rolls; i++ {
-		fmt.Print(rand.IntN(6))
+	// Dice roll
+	for i := 0; i < *n; i++ {
+		fmt.Print(rand.IntN(*s))
 
-		if i < n_rolls-1 {
+		if i < *n-1 {
 			fmt.Print(",")
 		}
 	}
+
+	fmt.Println()
 }
