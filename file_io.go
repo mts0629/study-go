@@ -7,7 +7,7 @@ import (
 
 func write_file() {
 	// Create/open a file
-	f, err := os.Create("./work/test.txt")
+	f, err := os.Create("/tmp/test.txt")
 	if err != nil {
 		fmt.Println(err)
 		fmt.Println("Failed to create file")
@@ -30,7 +30,7 @@ func write_file() {
 
 func read_file() {
 	// Open a file
-	f, err := os.Open("./work/test.txt")
+	f, err := os.Open("/tmp/test.txt")
 	if err != nil {
 		fmt.Println(err)
 		fmt.Println("Failed to open file")
