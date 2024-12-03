@@ -1,6 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
+
+// Worker goroutine with channel
+func worker(finish chan bool) {
+	fmt.Print("wait...")
+	time.Sleep(time.Second)
+	fmt.Println("finished")
+
+	// Notify finish of the work
+	finish <- true
+}
 
 func main() {
 	// New channel which conveys a string
@@ -22,4 +35,10 @@ func main() {
 	// Values are queued
 	fmt.Println(<-buf)
 	fmt.Println(<-buf)
+
+	finish := make(chan bool, 1)
+	go worker(finish)
+
+	// Block until receiving a notification
+	<-finish
 }
