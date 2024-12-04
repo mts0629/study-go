@@ -15,6 +15,17 @@ func worker(finish chan bool) {
 	finish <- true
 }
 
+// Only accept a channel for sending value
+func ping(pings chan<- string, msg string) {
+	pings <- msg
+}
+
+// First channel for sending value, second channel for receiving value
+func pong(pings <-chan string, pongs chan<- string) {
+	msg := <-pings
+	pongs <- msg + "pong"
+}
+
 func main() {
 	// New channel which conveys a string
 	messages := make(chan string)
@@ -41,4 +52,10 @@ func main() {
 
 	// Block until receiving a notification
 	<-finish
+
+	pings := make(chan string, 1)
+	pongs := make(chan string, 1)
+	ping(pings, "ping")
+	pong(pings, pongs)
+	fmt.Println(<-pongs)
 }
