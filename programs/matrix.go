@@ -15,16 +15,36 @@ func NewMat(rows int, cols int) *Mat {
 		data[i] = make([]float64, cols)
 	}
 
-	m := new(Mat)
-	m.rows = rows
-	m.cols = cols
-	m.data = data
+	return &Mat{
+		rows: rows,
+		cols: cols,
+		data: data,
+	}
+}
 
-	return m
+func InitMat(data [][]float64) *Mat {
+	rows := len(data)
+	cols := 0
+	for i := 0; i < rows; i++ {
+		if len(data[i]) > cols {
+			cols = len(data[i])
+		}
+	}
+
+	mat := NewMat(rows, cols)
+	for i := 0; i < rows; i++ {
+		for j := 0; j < cols; j++ {
+			mat.data[i][j] = data[i][j]
+		}
+	}
+
+	return mat
 }
 
 func main() {
-	mat := NewMat(2, 3)
+	a := InitMat([][]float64{{1, 2, 3}, {4, 5, 6}})
+	fmt.Println(a.data)
 
-	fmt.Println(mat.data)
+	b := InitMat([][]float64{{8, 9, 10}, {11, 12, 13}})
+	fmt.Println(b.data)
 }
