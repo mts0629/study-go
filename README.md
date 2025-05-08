@@ -6,9 +6,11 @@ Study of Go language
     - [A Tour of Go](https://go.dev/tour/welcome/1)
     - [Go by Example](https://gobyexample.com/)
     - [Effective Go](https://go.dev/doc/effective_go)
+    - [Tutorials](https://go.dev/doc/tutorial/)
 
 - `go_by_example/` ... Scripts based on examples in "Go by Example"
 - `playground/` ... Small programs for study
+- `tutorials/` ... Go tutorials
 
 ## License
 
@@ -25,3 +27,7 @@ Source codes are based on the contents in "Go by Example" and following changes 
 ### `playground/`
 
 Unlicense
+
+### `tutorials/`
+
+BSD license
