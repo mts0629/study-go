@@ -31,3 +31,9 @@ Unlicense
 ### `tutorials/`
 
 BSD license
+
+#### Third-party libraries
+
+- [Gin Web Framework](https://github.com/gin-gonic/gin)
+
+    MIT License
