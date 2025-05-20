@@ -14,7 +14,8 @@ func Hello(name string) (string, error) {
 	}
 
 	// Return a greeting that embeds the name in a message
-	message := fmt.Sprintf(randomFormat(), name)
+	// message := fmt.Sprintf(randomFormat(), name)
+	message := fmt.Sprintf(randomFormat(), "") // Cause an error
 	return message, nil
 }
 
@@ -22,7 +23,7 @@ func Hello(name string) (string, error) {
 // The return message is selected at random
 func randomFormat() string {
 	// A slice of message formats
-	formats := [] string {
+	formats := []string{
 		"Hi, %v. Welcome!",
 		"Great to see you, %v!",
 		"Hail, %v! Well met!",
